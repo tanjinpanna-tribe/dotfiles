@@ -2,7 +2,6 @@ min_version = "2025.11.7"
 
 [tools]
 bat = "0.26.1"
-btop = "1.4.6"
 doggo = "1.1.4"
 fd = "10.3.0"
 fzf = "0.67.0"
@@ -14,8 +13,6 @@ ripgrep = "15.1.0"
 starship = "1.24.2"
 zellij = "0.44.0"
 zoxide = "0.9.8"
-opencode = "1.2.27"
-"github:peteonrails/voxtype" = { version = "0.6.3", asset_pattern = "voxtype-*-linux-x86_64-vulkan" }
 difftastic = "0.67.0"
 "github:twpayne/chezmoi" = "2.70.0"
 "github:neovim/neovim" = "0.12.0"
