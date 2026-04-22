@@ -1,0 +1,15 @@
+Host *
+  AddKeysToAgent yes
+  IgnoreUnknown UseKeychain
+{{- if eq .chezmoi.os "darwin" }}
+  UseKeychain yes
+{{- end }}
+
+Host github.com
+  HostName github.com
+  User git
+
+# Enable agent forwarding only for trusted remote development hosts.
+# Example:
+# Host devpod-* codespace-*
+#   ForwardAgent yes

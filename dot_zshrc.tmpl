@@ -27,6 +27,11 @@ export PATH=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/sh
 {{- end}}
 
 {{if not .remote -}}
+# pick up macOS launchd ssh-agent socket
+if [ -z "${SSH_AUTH_SOCK:-}" ] && command -v launchctl >/dev/null 2>&1; then
+  export SSH_AUTH_SOCK="$(launchctl getenv SSH_AUTH_SOCK)"
+fi
+
 # setup gpg-agent ssh
 if command -v gpgconf >/dev/null 2>&1; then
   unset SSH_AGENT_PID
