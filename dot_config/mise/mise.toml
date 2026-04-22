@@ -18,7 +18,6 @@ opencode = "1.2.27"
 "github:peteonrails/voxtype" = { version = "0.6.3", asset_pattern = "voxtype-*-linux-x86_64-vulkan" }
 difftastic = "0.67.0"
 "github:twpayne/chezmoi" = "2.70.0"
-"github:nushell/nushell" = { version = "0.111.0", exe = "nu" }
 "github:neovim/neovim" = "0.12.0"
 
 [settings]
