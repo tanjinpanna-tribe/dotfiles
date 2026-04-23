@@ -1,0 +1,4 @@
+[".pi/agent/extensions/sirdar"]
+type = "archive"
+url = "https://github.com/aklaran/sirdar/archive/refs/heads/main.tar.gz"
+stripComponents = 1

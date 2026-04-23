@@ -1,0 +1,33 @@
+#!/bin/bash
+# sirdar hash: {{ include ".chezmoiexternals/sirdar.toml" | sha256sum }}
+# pi-diff-ui hash: {{ include ".chezmoiexternals/pi-diff-ui.toml" | sha256sum }}
+
+set -euo pipefail
+
+PI_AGENT_DIR="{{ .chezmoi.homeDir }}/.pi/agent"
+PI_DIFF_UI_DIR="$PI_AGENT_DIR/extensions/pi-diff-ui"
+SIRDAR_DIR="$PI_AGENT_DIR/extensions/sirdar"
+
+if [[ ! -d "$PI_DIFF_UI_DIR" || ! -d "$SIRDAR_DIR" ]]; then
+  exit 0
+fi
+
+if command -v npm >/dev/null 2>&1; then
+  npm_cmd=(npm)
+elif command -v mise >/dev/null 2>&1; then
+  npm_cmd=(mise exec node -- npm)
+else
+  echo "Skipping Pi extension install: npm or mise is required" >&2
+  exit 0
+fi
+
+(
+  cd "$PI_DIFF_UI_DIR"
+  "${npm_cmd[@]}" install --no-fund --no-audit
+  "${npm_cmd[@]}" run build
+)
+
+(
+  cd "$SIRDAR_DIR"
+  "${npm_cmd[@]}" install --no-fund --no-audit
+)

@@ -1,0 +1,4 @@
+[".pi/agent/extensions/pi-diff-ui"]
+type = "archive"
+url = "https://github.com/aklaran/pi-diff-ui/archive/refs/heads/main.tar.gz"
+stripComponents = 1

@@ -405,6 +405,10 @@ url = "https://nodejs.org/dist/v25.5.0/node-v25.5.0-darwin-x64.tar.gz"
 checksum = "sha256:4d2773e98d3f35d172478d5101de1f571d851053d2ed67bbe39a5bdeae87d804"
 url = "https://nodejs.org/dist/v25.5.0/node-v25.5.0-win-x64.zip"
 
+[[tools."npm:@mariozechner/pi-coding-agent"]]
+version = "0.69.0"
+backend = "npm:@mariozechner/pi-coding-agent"
+
 [[tools."npm:obsidian-cli"]]
 version = "0.5.1"
 backend = "npm:obsidian-cli"

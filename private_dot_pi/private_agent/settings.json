@@ -8,5 +8,11 @@
   "transport": "sse",
   "enableInstallTelemetry": false,
   "treeFilterMode": "default",
-  "theme": "catppuccin-mocha"
+  "theme": "catppuccin-mocha",
+  "packages": [
+    "git:github.com/aklaran/himal.git"
+  ],
+  "extensions": [
+    "./extensions/sirdar"
+  ]
 }
