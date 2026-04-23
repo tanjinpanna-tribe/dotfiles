@@ -3,4 +3,12 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 	},
+	// Optional local-only Obsidian vault mount.
+	// Useful when you want a persistent knowledge base available inside the container.
+	// "mounts": [
+	// 	"source=${localEnv:HOME}/Documents/Obsidian,target=/workspaces/obsidian,type=bind,consistency=cached"
+	// ],
+	// "containerEnv": {
+	// 	"OBSIDIAN_VAULT": "/workspaces/obsidian"
+	// },
 }

@@ -32,26 +32,6 @@ url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_
 checksum = "sha256:0f729b4b6f5f28d395c641eacc2e9ff68d0096b85aa0eec344aa62425144b69b"
 url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-pc-windows-msvc.zip"
 
-[[tools.btop]]
-version = "1.4.6"
-backend = "aqua:aristocratos/btop"
-
-[tools.btop."platforms.linux-arm64"]
-checksum = "sha256:7902578c0439332573148caf6b3515df2b158d163baeeff046028e428ec3295a"
-url = "https://github.com/aristocratos/btop/releases/download/v1.4.6/btop-aarch64-unknown-linux-musl.tbz"
-
-[tools.btop."platforms.linux-arm64-musl"]
-checksum = "sha256:7902578c0439332573148caf6b3515df2b158d163baeeff046028e428ec3295a"
-url = "https://github.com/aristocratos/btop/releases/download/v1.4.6/btop-aarch64-unknown-linux-musl.tbz"
-
-[tools.btop."platforms.linux-x64"]
-checksum = "sha256:9bf7ed170423bb3709a8020767bd2ca529c5632af478f229dce7cdfd32b25691"
-url = "https://github.com/aristocratos/btop/releases/download/v1.4.6/btop-x86_64-unknown-linux-musl.tbz"
-
-[tools.btop."platforms.linux-x64-musl"]
-checksum = "sha256:9bf7ed170423bb3709a8020767bd2ca529c5632af478f229dce7cdfd32b25691"
-url = "https://github.com/aristocratos/btop/releases/download/v1.4.6/btop-x86_64-unknown-linux-musl.tbz"
-
 [[tools.difftastic]]
 version = "0.67.0"
 backend = "aqua:Wilfred/difftastic"
@@ -187,10 +167,12 @@ backend = "aqua:cli/cli"
 [tools.github-cli."platforms.linux-arm64"]
 checksum = "sha256:83cf7a7962ea9dfcc2c123666695792916a87af32cba5f1f6e585db08fa57547"
 url = "https://github.com/cli/cli/releases/download/v2.86.0/gh_2.86.0_linux_arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.linux-arm64-musl"]
 checksum = "sha256:83cf7a7962ea9dfcc2c123666695792916a87af32cba5f1f6e585db08fa57547"
 url = "https://github.com/cli/cli/releases/download/v2.86.0/gh_2.86.0_linux_arm64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.linux-x64"]
 checksum = "sha256:f3b08bd6a28420cc2229b0a1a687fa25f2b838d3f04b297414c1041ca68103c7"
@@ -200,18 +182,22 @@ provenance = "github-attestations"
 [tools.github-cli."platforms.linux-x64-musl"]
 checksum = "sha256:f3b08bd6a28420cc2229b0a1a687fa25f2b838d3f04b297414c1041ca68103c7"
 url = "https://github.com/cli/cli/releases/download/v2.86.0/gh_2.86.0_linux_amd64.tar.gz"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.macos-arm64"]
 checksum = "sha256:bde753978a352c5ae6c4abec47334d516e82807af20c9dbbd45507a5a0aedaaa"
 url = "https://github.com/cli/cli/releases/download/v2.86.0/gh_2.86.0_macOS_arm64.zip"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.macos-x64"]
 checksum = "sha256:ced7094d05702eb54a63542abd8a1dc570b7e5ae94951844eb1626ba74bc2c60"
 url = "https://github.com/cli/cli/releases/download/v2.86.0/gh_2.86.0_macOS_amd64.zip"
+provenance = "github-attestations"
 
 [tools.github-cli."platforms.windows-x64"]
 checksum = "sha256:983c74a8c594366b198485187cd6d4d07638f0bf9a9948d51a2a81a5164d8bfd"
 url = "https://github.com/cli/cli/releases/download/v2.86.0/gh_2.86.0_windows_amd64.zip"
+provenance = "github-attestations"
 
 [[tools."github:neovim/neovim"]]
 version = "0.12.0"
@@ -251,48 +237,6 @@ url_api = "https://api.github.com/repos/neovim/neovim/releases/assets/384125166"
 checksum = "sha256:7e6d4ac6b22a46e89b0da3ac560635ee39c00081f14093a8851154fb260b7428"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.0/nvim-win64.zip"
 url_api = "https://api.github.com/repos/neovim/neovim/releases/assets/384125181"
-
-[[tools."github:peteonrails/voxtype"]]
-version = "0.6.3"
-backend = "github:peteonrails/voxtype"
-
-[tools."github:peteonrails/voxtype".options]
-asset_pattern = "voxtype-*-linux-x86_64-vulkan"
-
-[tools."github:peteonrails/voxtype"."platforms.linux-arm64"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
-
-[tools."github:peteonrails/voxtype"."platforms.linux-arm64-musl"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
-
-[tools."github:peteonrails/voxtype"."platforms.linux-x64"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
-
-[tools."github:peteonrails/voxtype"."platforms.linux-x64-musl"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
-
-[tools."github:peteonrails/voxtype"."platforms.macos-arm64"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
-
-[tools."github:peteonrails/voxtype"."platforms.macos-x64"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
-
-[tools."github:peteonrails/voxtype"."platforms.windows-x64"]
-checksum = "sha256:5af469003a6ce4e8a24716757587730cec0431e6a2cf5f09fc7864a54241cc49"
-url = "https://github.com/peteonrails/voxtype/releases/download/v0.6.3/voxtype-0.6.3-linux-x86_64-vulkan"
-url_api = "https://api.github.com/repos/peteonrails/voxtype/releases/assets/363038504"
 
 [[tools."github:twpayne/chezmoi"]]
 version = "2.70.0"
@@ -461,37 +405,9 @@ url = "https://nodejs.org/dist/v25.5.0/node-v25.5.0-darwin-x64.tar.gz"
 checksum = "sha256:4d2773e98d3f35d172478d5101de1f571d851053d2ed67bbe39a5bdeae87d804"
 url = "https://nodejs.org/dist/v25.5.0/node-v25.5.0-win-x64.zip"
 
-[[tools.opencode]]
-version = "1.2.27"
-backend = "aqua:sst/opencode"
-
-[tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:bcd91a3ebe9480ffb1702e5c71168d451150421acc99c6d1abf5edc5e2cb39f5"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-linux-arm64.tar.gz"
-
-[tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:bcd91a3ebe9480ffb1702e5c71168d451150421acc99c6d1abf5edc5e2cb39f5"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-linux-arm64.tar.gz"
-
-[tools.opencode."platforms.linux-x64"]
-checksum = "sha256:6fe3820b145857f7ff507d2826058b7acf1fce8258def1498468dd43809e69e8"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-linux-x64.tar.gz"
-
-[tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:6fe3820b145857f7ff507d2826058b7acf1fce8258def1498468dd43809e69e8"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-linux-x64.tar.gz"
-
-[tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:fa680fa79086c7509d3a2c21e49c9264b803da7c0f1b7807ed842b8e37325597"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-darwin-arm64.zip"
-
-[tools.opencode."platforms.macos-x64"]
-checksum = "sha256:fc719db27acbc817ff2a4df2bbaa788e02976ddc26a96c84de4fdbe663714b8c"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-darwin-x64.zip"
-
-[tools.opencode."platforms.windows-x64"]
-checksum = "sha256:9e2e43568e6f952e8c7cb77b934fbff53f454f0213688f24f3c3769b69703e84"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.2.27/opencode-windows-x64.zip"
+[[tools."npm:obsidian-cli"]]
+version = "0.5.1"
+backend = "npm:obsidian-cli"
 
 [[tools.ripgrep]]
 version = "15.1.0"
@@ -584,6 +500,10 @@ url = "https://github.com/zellij-org/zellij/releases/download/v0.44.0/zellij-aar
 [tools.zellij."platforms.macos-x64"]
 checksum = "sha256:2c2b0fde5862b3d82814a2dbcf620548b502bd8e843031401a2d7d7b67d9d0ca"
 url = "https://github.com/zellij-org/zellij/releases/download/v0.44.0/zellij-x86_64-apple-darwin.tar.gz"
+
+[tools.zellij."platforms.windows-x64"]
+checksum = "sha256:aeeb3e9befeac526a60cd0ff6cbec80d4a8335a3ff7ca00a69446e7181cbd424"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.0/zellij-x86_64-pc-windows-msvc.zip"
 
 [[tools.zoxide]]
 version = "0.9.8"
