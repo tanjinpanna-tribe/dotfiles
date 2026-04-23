@@ -1,0 +1,8 @@
+os:
+  editPreset: nvim
+  openLink: '{{ if eq .chezmoi.os "darwin" }}open {{ "{{link}}" }}{{ else }}bash -lc ''if command -v code >/dev/null 2>&1; then code --open-url "$1"; elif command -v xdg-open >/dev/null 2>&1; then xdg-open "$1"; elif command -v open >/dev/null 2>&1; then open "$1"; else echo "No URL opener found" >&2; exit 1; fi'' _ {{ "{{link}}" }}{{ end }}'
+
+keybinding:
+  universal:
+    edit: o
+    openFile: e
