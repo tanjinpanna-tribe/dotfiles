@@ -7,5 +7,4 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 {{- if not $remote }}
 [git]
   autoCommit = true
-  autoPush = true
 {{- end }}
