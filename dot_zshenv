@@ -1,0 +1,11 @@
+# ~/.zshenv — sourced by every zsh invocation, including non-interactive `zsh -c`.
+# Use sparingly; most config belongs in .zshrc (interactive shells only).
+
+# Suppress zoxide's "detected a possible configuration issue" warning in shells
+# that receive the `cd=z` alias and __zoxide_* functions via a snapshot/replay
+# mechanism but never run the chpwd_functions+=(__zoxide_hook) registration.
+# Notable example: Claude Code's Bash tool sources ~/.claude/shell-snapshots/*.sh
+# which captures functions + aliases but not zsh hook arrays, so every `cd` in
+# that shell trips __zoxide_doctor. Setting this to 0 makes the doctor return
+# early. See https://github.com/ajeetdsouza/zoxide
+export _ZO_DOCTOR=0
