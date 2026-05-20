@@ -74,6 +74,8 @@ fi
 # enable zsh vi-mode
 bindkey -v
 export KEYTIMEOUT=1 # make switching between modes faster
+bindkey -M viins '^[^?' backward-kill-word  # Alt-Backspace (most terminals send ESC+DEL)
+bindkey -M viins '^[^H' backward-kill-word  # Alt-Backspace (some terminals send ESC+BS)
 
 # enable the starship prompt
 if command -v starship > /dev/null ; then
