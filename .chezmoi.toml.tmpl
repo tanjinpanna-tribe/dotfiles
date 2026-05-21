@@ -3,6 +3,8 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
   remote = {{ $remote }}
+  name = {{ promptStringOnce . "name" "Git name" | quote }}
+  email = {{ promptStringOnce . "email" "Git email" | quote }}
 
 {{- if not $remote }}
 [git]
