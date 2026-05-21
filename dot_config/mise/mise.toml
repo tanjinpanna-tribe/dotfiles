@@ -17,6 +17,7 @@ starship = "1.24.2"
 zellij = "0.44.0"
 zoxide = "0.9.8"
 difftastic = "0.67.0"
+direnv = "2.37.1"
 "github:twpayne/chezmoi" = "2.70.0"
 "github:neovim/neovim" = "0.12.0"
 

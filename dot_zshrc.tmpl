@@ -76,6 +76,10 @@ bindkey -v
 export KEYTIMEOUT=1 # make switching between modes faster
 bindkey -M viins '^[^?' backward-kill-word  # Alt-Backspace (most terminals send ESC+DEL)
 bindkey -M viins '^[^H' backward-kill-word  # Alt-Backspace (some terminals send ESC+BS)
+bindkey -M viins '^[[1;3D' backward-word    # Alt-Left (most terminals send ESC+[1;3D)
+bindkey -M viins '^[[1;3C' forward-word     # Alt-Right (most terminals send ESC+[1;3C)
+bindkey -M viins '^[b' backward-word        # Alt-Left (some terminals send ESC+b)
+bindkey -M viins '^[f' forward-word         # Alt-Right (some terminals send ESC+f)
 
 # enable the starship prompt
 if command -v starship > /dev/null ; then
@@ -100,6 +104,10 @@ fi
 if command -v zoxide > /dev/null ; then
   eval "$(zoxide init zsh)"
   alias cd="z"
+fi
+
+if command -v direnv > /dev/null ; then
+  eval "$(direnv hook zsh)"
 fi
 
 # some nice functions and aliases
