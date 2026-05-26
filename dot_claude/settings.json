@@ -1,0 +1,11 @@
+{
+  "effortLevel": "xhigh",
+  "theme": "dark",
+  "enabledPlugins": {
+    "greptile@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/tanjin/.claude/statusline-command.sh"
+  }
+}
