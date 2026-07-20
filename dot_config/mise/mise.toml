@@ -1,6 +1,7 @@
 min_version = "2025.11.7"
 
 [tools]
+aws = "2.36.3"
 bat = "0.26.1"
 doggo = "1.1.4"
 fd = "10.3.0"
@@ -20,6 +21,9 @@ difftastic = "0.67.0"
 direnv = "2.37.1"
 "github:twpayne/chezmoi" = "2.70.0"
 "github:neovim/neovim" = "0.12.0"
+azure-kubelogin = "0.2.15"
+"ubi:abhinav/git-spice" = "0.29.0"
+azure-cli = { version = "2.83.0", uvx_args = "--prerelease=allow" }
 
 [settings]
 experimental = true
