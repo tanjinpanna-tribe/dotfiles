@@ -1,0 +1,8 @@
+{
+  "name": "Dark (high-contrast user messages)",
+  "base": "dark",
+  "overrides": {
+    "userMessageBackground": "#2f4670",
+    "userMessageBackgroundHover": "#3b5688"
+  }
+}

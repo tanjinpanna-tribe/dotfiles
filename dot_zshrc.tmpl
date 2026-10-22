@@ -100,6 +100,10 @@ if command -v flux > /dev/null ; then
   source <(flux completion zsh)
 fi
 
+if command -v herdr > /dev/null ; then
+  source <(herdr completion zsh)
+fi
+
 # if zoxide is installed, enable it
 if command -v zoxide > /dev/null ; then
   eval "$(zoxide init zsh)"
@@ -138,3 +142,11 @@ fi
 if [[ -d .zsh/zsh-syntax-highlighting ]] ; then
   source .zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+alias history='fc -l 1'
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
+
+# Untracked, per-machine settings (private tools, PATH entries etc.)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

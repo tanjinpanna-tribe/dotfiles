@@ -8,3 +8,9 @@ MISE_BIN_PATH="{{ if $m := lookPath "mise" }}{{ $m }}{{ else if $l := lookPath (
 
 $MISE_BIN_PATH trust {{ .chezmoi.homeDir }}/.config/mise
 $MISE_BIN_PATH install
+
+# herdr agent hooks go stale on herdr upgrades; reinstall after every package change.
+# Non-fatal: a failure here shouldn't abort apply on machines missing an agent.
+for agent in claude pi codex; do
+  $MISE_BIN_PATH exec -- herdr integration install "$agent" || echo "herdr: $agent integration failed" >&2
+done

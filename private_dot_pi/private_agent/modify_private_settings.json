@@ -1,0 +1,22 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Repo keys win; pi-written keys (lastChangelogVersion, defaultProvider/Model) are kept from the live file. */ -}}
+{{- $repo := `{
+  "defaultThinkingLevel": "high",
+  "editorPaddingX": 1,
+  "hideThinkingBlock": false,
+  "transport": "sse",
+  "enableInstallTelemetry": false,
+  "treeFilterMode": "default",
+  "theme": "catppuccin-mocha",
+  "packages": [
+    "git:github.com/aklaran/himal.git",
+    "npm:pi-mcp-adapter"
+  ],
+  "extensions": [
+    "./extensions/sirdar",
+    "-builtin:mcp"
+  ]
+}` | fromJson -}}
+{{- $live := dict -}}
+{{- if .chezmoi.stdin }}{{ $live = .chezmoi.stdin | fromJson }}{{ end -}}
+{{ merge $repo $live | toPrettyJson }}

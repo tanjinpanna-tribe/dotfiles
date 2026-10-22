@@ -1,0 +1,21 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Merge into the live file: herdr/orca hooks and machine-local keys (autoMode, env) are
+       written by tools and must survive apply. Live values win; these only fill gaps. */ -}}
+{{- $defaults := dict
+  "model" "opus[1m]"
+  "effortLevel" "xhigh"
+  "theme" "custom:dark-hicontrast-user"
+  "tui" "fullscreen"
+  "autoCompactWindow" 400000
+  "skipWorkflowUsageWarning" true
+  "enabledPlugins" (dict
+    "greptile@claude-plugins-official" true
+    "ponytail@ponytail" true)
+  "extraKnownMarketplaces" (dict
+    "ponytail" (dict "source" (dict "source" "github" "repo" "DietrichGebert/ponytail")))
+-}}
+{{- $live := dict -}}
+{{- if .chezmoi.stdin }}{{ $live = .chezmoi.stdin | fromJson }}{{ end -}}
+{{- $s := merge $live $defaults -}}
+{{- $s = setValueAtPath "statusLine" (dict "type" "command" "command" (printf "bash %s/.claude/statusline-command.sh" .chezmoi.homeDir)) $s -}}
+{{ $s | toPrettyJson }}
