@@ -1,0 +1,15 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Repo keys win; machine-local keys (e.g. work MCP servers) are kept from the live file. */ -}}
+{{- $repo := `{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "catppuccin",
+  "share": "disabled",
+  "tui": {
+    "scroll_acceleration": {
+      "enabled": true
+    }
+  }
+}` | fromJson -}}
+{{- $live := dict -}}
+{{- if .chezmoi.stdin }}{{ $live = .chezmoi.stdin | fromJson }}{{ end -}}
+{{ merge $repo $live | toPrettyJson }}

@@ -52,7 +52,7 @@ DevPod is supported via `.chezmoiexternals/devpod.toml`, which ensures the DevPo
 
 ### 4. VS Code Dev Containers
 
-- The `.devcontainer/` folder contains a `devcontainer.json` and a `Dockerfile` based on `ghcr.io/rio/toolbox:latest`.
+- The `.devcontainer/` folder contains a `devcontainer.json` and a `Dockerfile` based on `mcr.microsoft.com/devcontainers/base:debian-13`.
 - Open the repo in VS Code and "Reopen in Container" to get a fully provisioned environment with all tools and dotfiles.
 
 ### 5. GitHub Codespaces
