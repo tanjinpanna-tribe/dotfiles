@@ -1,3 +1,5 @@
 **/.envrc
 .rio
 .opencode
+
+**/.claude/settings.local.json

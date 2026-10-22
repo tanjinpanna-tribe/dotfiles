@@ -96,8 +96,8 @@ if command -v kubectl > /dev/null ; then
   alias k="kubectl"
 fi
 
-if command -v flux > /dev/null ; then
-  source <(flux completion zsh)
+if command -v herdr > /dev/null ; then
+  source <(herdr completion zsh)
 fi
 
 # if zoxide is installed, enable it
@@ -111,6 +111,96 @@ if command -v direnv > /dev/null ; then
 fi
 
 # some nice functions and aliases
+
+## Clean up stale Claude Code worktrees (.claude/worktrees/*) and prune merged
+## branches. Claude locks its session worktrees: a lock whose session pid is gone
+## gets dropped automatically, one a live session still holds needs --evict (which
+## unlocks rather than `remove -f -f`, so the dirty check below still applies).
+## Worktrees with uncommitted/untracked changes are skipped unless --force.
+##   worktree-clean            # remove clean, unlocked worktrees, then `gt sync`
+##   worktree-clean -n         # show what would be removed
+##   worktree-clean --evict    # also remove worktrees a live session has locked
+##   worktree-clean --force    # also remove dirty worktrees (rm uncommitted work)
+worktree-clean() {
+  local force="" dry="" evict=""
+  for arg in "$@"; do
+    case "$arg" in
+      --force|-f) force="--force" ;;
+      --evict|-e) evict=1 ;;
+      --dry-run|-n) dry=1 ;;
+      *) echo "worktree-clean: unknown option '$arg'" >&2; return 2 ;;
+    esac
+  done
+
+  git rev-parse --show-toplevel > /dev/null 2>&1 || {
+    echo "worktree-clean: not inside a git repository" >&2; return 1
+  }
+
+  local removed=0 skipped=0 wt lock pid err br main open_heads gh_ok=1
+  main=$(git worktree list --porcelain | awk '/^worktree /{ print substr($0, 10); exit }')
+  open_heads=$(gh pr list --state open --author @me --limit 200 --json headRefName -q '.[].headRefName' 2>/dev/null) || gh_ok=""
+  open_heads=$'\n'"$open_heads"$'\n'
+  while IFS=$'\t' read -r wt lock; do
+    [[ "$wt" == "$main" ]] && continue
+    if [[ "$wt" != */.claude/worktrees/* ]]; then
+      # Hand-made worktrees go only once their branch has no open PR (or HEAD is detached).
+      br=$(git -C "$wt" branch --show-current 2>/dev/null)
+      if [[ -n "$br" && ( -z "$gh_ok" || "$open_heads" == *$'\n'"$br"$'\n'* ) ]]; then
+        if [[ -n "$gh_ok" ]]; then err="open PR on $br"; else err="gh unavailable, can't check PRs"; fi
+        echo "skipped ($err): $wt" >&2
+        skipped=$((skipped + 1))
+        continue
+      fi
+    fi
+
+    if [[ -n "$lock" ]]; then
+      # Claude's lock reason carries the session pid; only an unambiguously dead one
+      # is safe to unlock. Pid reuse just costs an extra skip.
+      pid="${lock##*pid }"; pid="${pid%%[^0-9]*}"
+      if [[ -z "$evict" ]] && { [[ -z "$pid" ]] || kill -0 "$pid" 2>/dev/null; }; then
+        echo "skipped (locked${pid:+ by live session, pid $pid} — re-run with --evict): $wt" >&2
+        skipped=$((skipped + 1))
+        continue
+      fi
+      [[ -n "$dry" ]] || git worktree unlock "$wt" 2>/dev/null
+    fi
+
+    if [[ -n "$dry" ]]; then
+      if [[ -z "$force" && -n "$(git -C "$wt" status --porcelain 2>/dev/null)" ]]; then
+        echo "skipped (dirty — add --force): $wt" >&2
+        skipped=$((skipped + 1))
+        continue
+      fi
+      echo "would remove:${lock:+ (unlocking)} $wt"
+      removed=$((removed + 1))
+      continue
+    fi
+
+    if err=$(git worktree remove $force "$wt" 2>&1); then
+      echo "removed: $wt"
+      removed=$((removed + 1))
+    else
+      echo "skipped: $wt — ${err#fatal: }" >&2
+      skipped=$((skipped + 1))
+    fi
+  done < <(git worktree list --porcelain | awk '
+    /^worktree /{ path = substr($0, 10); lock = "" }
+    /^locked/   { lock = (length($0) > 7 ? substr($0, 8) : "locked") }
+    /^$/        { if (path != "") print path "\t" lock; path = "" }
+    END         { if (path != "") print path "\t" lock }')
+
+  if [[ -n "$dry" ]]; then
+    echo "dry-run: $removed would be removed, $skipped skipped"
+    return 0
+  fi
+
+  echo "worktree-clean: $removed removed, $skipped skipped"
+  git worktree prune                              # reap any leftover admin entries
+  if command -v gt > /dev/null; then
+    echo "running gt sync to prune merged branches..."
+    gt sync
+  fi
+}
 
 ## use bat instead of cat 
 if command -v bat > /dev/null ; then
@@ -138,3 +228,11 @@ fi
 if [[ -d .zsh/zsh-syntax-highlighting ]] ; then
   source .zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+# Added by TKS CLI installer
+export PATH="$HOME/.tks/bin:$PATH"
+
+alias history='fc -l 1'
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
