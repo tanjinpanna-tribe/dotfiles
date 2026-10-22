@@ -1,5 +1,6 @@
-{
-  "lastChangelogVersion": "1.0.0",
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Repo keys win; pi-written keys (lastChangelogVersion, defaultProvider/Model) are kept from the live file. */ -}}
+{{- $repo := `{
   "defaultThinkingLevel": "high",
   "editorPaddingX": 1,
   "hideThinkingBlock": false,
@@ -15,4 +16,7 @@
     "./extensions/sirdar",
     "-builtin:mcp"
   ]
-}
+}` | fromJson -}}
+{{- $live := dict -}}
+{{- if .chezmoi.stdin }}{{ $live = .chezmoi.stdin | fromJson }}{{ end -}}
+{{ merge $repo $live | toPrettyJson }}
