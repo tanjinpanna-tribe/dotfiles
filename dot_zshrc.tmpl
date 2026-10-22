@@ -96,6 +96,10 @@ if command -v kubectl > /dev/null ; then
   alias k="kubectl"
 fi
 
+if command -v flux > /dev/null ; then
+  source <(flux completion zsh)
+fi
+
 if command -v herdr > /dev/null ; then
   source <(herdr completion zsh)
 fi
