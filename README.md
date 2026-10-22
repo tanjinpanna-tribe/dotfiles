@@ -16,7 +16,7 @@ This repository contains my personal dotfiles, managed with [chezmoi](https://ww
 ├── .chezmoiexternals/         # chezmoi-managed external resources (tools, fonts, configs)
 ├── .chezmoiscripts/           # chezmoi hook scripts (e.g., install packages)
 ├── .devcontainer/             # VS Code Dev Container config (Dockerfile, devcontainer.json)
-├── dot_*                      # Dotfiles (bashrc, gitconfig, tmux, wezterm, zshrc, etc.)
+├── dot_*                      # Dotfiles (bashrc, gitconfig, wezterm, zshrc, etc.)
 ├── dot_config/                # XDG config files (alacritty, git, k9s, mise, nvim, opencode, starship, zellij)
 ├── private_dot_gnupg/         # Private GPG config (not tracked by chezmoi)
 ├── setup                      # Bootstrap script for new machines
@@ -67,7 +67,7 @@ DevPod is supported via `.chezmoiexternals/devpod.toml`, which ensures the DevPo
 - **Prompt**: [starship](https://starship.rs/) with custom theme
 - **Editor**: [Neovim](https://neovim.io/) (LazyVim-based), with plugins and extras
 - **Terminal**: [WezTerm](https://wezfurlong.org/wezterm/), [alacritty](https://alacritty.org/)
-- **Multiplexers**: tmux, zellij
+- **Multiplexers**: zellij
 - **Tools**: Managed with [mise](https://mise.jdx.dev/) (see `.config/mise/config.toml`)
 - **Kubernetes**: k9s with custom skin
 - **Fonts**: DepartureMono (auto-installed)
